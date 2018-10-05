@@ -496,7 +496,7 @@ See [Conversion and Promotion](@ref conversion-and-promotion) for how to define 
 | [`sign(x)`](@ref)       | indicates the sign of `x`, returning -1, 0, or +1          |
 | [`signbit(x)`](@ref)    | indicates whether the sign bit is on (true) or off (false) |
 | [`copysign(x,y)`](@ref) | a value with the magnitude of `x` and the sign of `y`      |
-| [`flipsign(x,y)`](@ref) | a value with the magnitude of `x` and the sign of `x*y`    |
+| [`flipsign(x,y)`](@ref) | a value with the magnitude of `x` and the sign of `x.*y`    |
 
 ### Powers, logs and roots
 
