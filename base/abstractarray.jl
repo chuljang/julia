@@ -640,7 +640,9 @@ emptymutable(itr, ::Type{U}) where {U} = Vector{U}()
 
 ## from general iterable to any array
 
-function copyto!(dest::AbstractArray, src)
+copyto!(dest::AbstractArray, src) = _copyto_impl!(dest, src, true)
+
+function _copyto_impl!(dest::AbstractArray, src, allowshorter::Bool)
     destiter = eachindex(dest)
     y = iterate(destiter)
     for x in src
@@ -648,6 +650,9 @@ function copyto!(dest::AbstractArray, src)
             throw(ArgumentError(string("destination has fewer elements than required")))
         dest[y[1]] = x
         y = iterate(destiter, y[2])
+    end
+    if !allowshorter && y !== nothing
+        throw(ArgumentError(string("source has fewer elements than destination")))
     end
     return dest
 end
