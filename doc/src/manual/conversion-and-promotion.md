@@ -96,7 +96,14 @@ Some languages consider parsing strings as numbers or formatting numbers as stri
 (many dynamic languages will even perform conversion for you automatically), however Julia does
 not: even though some strings can be parsed as numbers, most strings are not valid representations
 of numbers, and only a very limited subset of them are. Therefore in Julia the dedicated `parse`
-function must be used to perform this operation, making it more explicit.
+function must be used to perform this operation, making it more explicit:
+
+```julia
+julia> x = eval(parse("[1 2 3; 4 5 6]"))
+2×3 Array{Int64,2}:
+ 1  2  3
+ 4  5  6
+```
 
 ### When is `convert` called?
 
